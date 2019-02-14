@@ -9,9 +9,5 @@ import net.pudi.onlineshoppingbackend.dto.Category;
 
 public interface CategoryDAO {
 
-	boolean add(Category category);
-	boolean delete(Category category);
 	List<Category> list();
-	Category get(int i);
-	List<Category> specificList(int j);
 }

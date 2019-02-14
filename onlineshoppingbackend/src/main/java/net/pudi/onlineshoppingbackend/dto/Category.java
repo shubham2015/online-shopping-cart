@@ -1,22 +1,15 @@
 package net.pudi.onlineshoppingbackend.dto;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id;
 	private String description;
 	private String name;
-	@Column(name = "is_active")
-	private boolean active = true;
-	@Column(name= "image_url")
-	private String imageURL;
+	private boolean active;
+	private String image;
 	public int getId() {
 		return id;
 	}
@@ -42,17 +35,11 @@ public class Category {
 		this.active = active;
 	}
 	public String getImage() {
-		return imageURL;
+		return image;
 	}
 	public void setImage(String image) {
-		this.imageURL = image;
-	}
-	@Override
-	public String toString() {
-		return "Category [id=" + id + ", description=" + description + ", name=" + name + ", active=" + active
-				+ ", imageURL=" + imageURL + "]";
+		this.image = image;
 	}
 	
 	
 }
-

@@ -19,6 +19,12 @@
 	
     <context:component-scan
 		base-package="net.pudi.onlineshoppingbackend.daoimpl"/>
+		<context:component-scan
+		base-package="net.pudi.onlineshoppingcart.config"/>
+		<context:component-scan
+		base-package="net.pudi.onlineshoppingbackend.dto"/>
+		<context:component-scan
+		base-package="net.pudi.onlineshoppingbackend.dao"/>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
