@@ -1,5 +1,5 @@
 CREATE TABLE category (
-	id IDENTITY,
+	id int AUTO_INCREMENT,
 	name VARCHAR(50),
 	description VARCHAR(255),
 	image_url VARCHAR(50),
@@ -9,7 +9,7 @@ CREATE TABLE category (
 );
 
 CREATE TABLE user_detail (
-	id IDENTITY,
+	id int AUTO_INCREMENT,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	role VARCHAR(50),

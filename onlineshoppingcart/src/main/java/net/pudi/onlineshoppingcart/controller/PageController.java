@@ -11,13 +11,14 @@ import org.springframework.web.servlet.ModelAndView;
 import net.pudi.onlineshoppingbackend.dao.CategoryDAO;
 import net.pudi.onlineshoppingbackend.dto.Category;
 
-//import net.kzn.shoppingbackend.dao.CategoryDAO;
-//import net.kzn.shoppingbackend.dao.ProductDAO;
+
 
 /*
  * Front Controller
  * Controller class which handles all the urls and will send the 
- * request to a prticular controller and return back the view 
+ * request to a particular controller and return back the view 
+ * 
+ * @Controller is added to specify that the class is a front controller and its going to handle the user requests
  */
 
 
@@ -26,7 +27,11 @@ import net.pudi.onlineshoppingbackend.dto.Category;
 public class PageController {
 	
 	//private static final Logger logger = LoggerFactory.getLogger(PageController.class);
-	
+	/*
+	 * Here we are autowiring an CategoryDAO interface object, So Spring will look for classes which has implemented the CategoryDAO
+	 * class which is CategoryDAOImpl and it handles the CategoryDAOImpl object and handles it. It will inject that class into this class
+	 * and lets us use CategoryDAOImpl object named as categoryDAO and uses those functions
+	 */
 	@Autowired
 	private CategoryDAO categoryDAO;
 	@RequestMapping(value = {"/", "/home", "/index"})

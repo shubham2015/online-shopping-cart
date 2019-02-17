@@ -2,8 +2,12 @@ package net.pudi.onlineshoppingcart.test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import net.pudi.onlineshoppingbackend.dao.CategoryDAO;
@@ -31,7 +35,7 @@ private static AnnotationConfigApplicationContext context;
 		categoryDAO = (CategoryDAO)context.getBean("categoryDAO");
 	}
 	
-	@Test
+	/*@Test
 	public void testAddCategory()
 	{
 		category = new Category();
@@ -41,12 +45,43 @@ private static AnnotationConfigApplicationContext context;
 		category.setDescription("This is television");
 		assertEquals("Succefull add",true,categoryDAO.add(category));
 	}
-	
-	@Test
+	*/
+	/*@Test
 	public void testDeletedCategory(Category category)
 	{
 	   
 		assertEquals("Succefull delete",true,categoryDAO.delete(category));
+	}*/
+	
+	/*@Test
+	public void testGetCategory()
+	{
+		category = categoryDAO.get(2);
+		assertEquals("succeful match",categoryDAO.get(2).getName(),category.getName());
+	}
+	*/
+	/*@Test
+	public void testUpdateCategory()
+	{
+		category= categoryDAO.get(4);
+		category.setName("booking");
+		assertEquals("Succesfull update",true,categoryDAO.update(category));
+	}*/
+	
+	/*@Test
+	public void testDeleteCategory()
+	{
+		category = categoryDAO.get(2);
+	   assertEquals("Succefull delete",true,categoryDAO.delete(category));
+	}*/
+	
+	@Test
+	public void testLists()
+	{
+		List<Category> cc = new ArrayList<>();
+		cc = categoryDAO.list();
+		System.out.println(cc.size());
+		assertEquals("all lists",3,cc.size());
 	}
 }
 
