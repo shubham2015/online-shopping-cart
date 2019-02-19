@@ -25,20 +25,91 @@ $(function(){
 	var $table = $('#productListTable');
 	if($table.length)
 		{
-		  var $jsonUrl = '';
+		console.log('inside this id')
+		  var jsonUrl = '';
 		  if(window.categoryId == '')
 			  {
-			   $jsonUrl =   window.contextRoot + '/json/data/all/products';
+			   jsonUrl = window.contextRoot + '/json/data/all/products';
 			  }
 		  else
 			  {
-			  $jsonUrl = window.contextRoot + '/json/data/category/'+ window.categoryId +'/products';
+			  jsonUrl = window.contextRoot + '/json/data/category/'+ window.categoryId +'/products';
 			  }
-		 $table.DataTable({
-		 lengthMenu: [[3,5,10,-1],['3 Records','5 Records','10 Records','ALL']],
+		  //console.log(jsonUrl)
+		  $.ajaxSetup({
+			  cache:false
+			});
+		  $table.DataTable({
+		  lengthMenu: [[3,5,10,-1],['3 Records','5 Records','10 Records','ALL']],
 		  pageLength: 5,
-		  data:products
-		
+		  ajax:{
+			 cache:false, 
+	    	 url: jsonUrl,
+	    	 dataSrc:''
+	     },
+	     columns: [
+	    	 {
+					data : 'name',
+					bSortable : false,
+					mRender : function(data, type, row) {
+
+						return '<img src="' + window.contextRoot
+								+ '/resources/images/' + data
+								+ '.jpg" class="dataTableImg"/>';
+
+					}
+				},
+	    	 
+	    	 {
+	    		 data: 'name'
+	         },
+	    	 {
+	    		 data: 'brand'
+	    	 },
+	    	 {
+	    		data: 'unitPrice',
+	    			mRender : function(data, type, row) {
+						return '&#8377; ' + data
+					}
+	    	 },
+	    	 {
+	    		 data: 'quantity',
+	    		 mRender : function(data, type, row) {
+
+						if (data < 1) {
+							return '<span style="color:red">Out of Stock!</span>';
+						}
+
+						return data;
+
+					}
+	    	 },
+	    	 {
+	    		 data:'views',
+	    		 mRender: function(data,type,row)
+	    		 {
+	    			 var str='';
+	    			
+	    			 str += '<a href="'+window.contextRoot+ '/show/'+data+'/product" class="btn btn-info btn-lg">View</a> &#160';
+	    			 if(row.quantity < 1)
+	    				 
+	    				 {
+	    				 str += '<a href="javascript:void(0)" class="btn btn-info btn-lg disabled">Add To Cart</a>';
+	    				 }
+	    			 else{ 
+	    			 str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product" class="btn btn-info btn-lg">Add To Cart</a>';
+	    			 }
+                      return str;
+	    		 }
+	    	 },
+	    	
+	    	 
+	    	],
+	    	 cache:false
 		});
+		  $.ajaxSetup({
+			  cache:false
+			});
 		}
 });
+		

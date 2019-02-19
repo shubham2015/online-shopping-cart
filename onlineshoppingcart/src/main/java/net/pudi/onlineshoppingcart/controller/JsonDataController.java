@@ -14,10 +14,9 @@ import net.pudi.onlineshoppingbackend.dto.Product;
 @Controller
 @RequestMapping("/json/data")
 public class JsonDataController {
-	
+
 	@Autowired
 	private ProductDAO productDAO;
-	
 	@RequestMapping("/all/products")
 	@ResponseBody
 	public List<Product> getAllProducts()
@@ -26,10 +25,8 @@ public class JsonDataController {
 	}
 	@RequestMapping("/category/{id}/products")
 	@ResponseBody
-	public List<Product> getCategoryProducts(@PathVariable("id") int id)
+	public List<Product> getProductByCategory(@PathVariable int id)
 	{
 		return productDAO.listActiveProductsByCategory(id);
 	}
-	
-
 }

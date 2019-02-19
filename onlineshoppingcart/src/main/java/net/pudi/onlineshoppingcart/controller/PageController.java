@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.pudi.onlineshoppingbackend.dao.CategoryDAO;
+import net.pudi.onlineshoppingbackend.dao.ProductDAO;
 import net.pudi.onlineshoppingbackend.dto.Category;
+import net.pudi.onlineshoppingbackend.dto.Product;
 
 
 
@@ -34,6 +36,8 @@ public class PageController {
 	 */
 	@Autowired
 	private CategoryDAO categoryDAO;
+	@Autowired
+	private ProductDAO productDAO;
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(@RequestParam(name="logout",required=false)String logout) {		
 		ModelAndView mv = new ModelAndView("page");		
@@ -67,10 +71,26 @@ public class PageController {
 	@RequestMapping(value="/show/all/products")
 	public ModelAndView showAllProducts()
 	{
+		System.out.println("i m inside all product");
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","All Products");
 		mv.addObject("categories",categoryDAO.list());
 		mv.addObject("userClickAllProducts",true);
+		return mv;
+	}
+	//Single product display
+	@RequestMapping(value="/show/{id}/product")
+	public ModelAndView ShowSingleProduct(@PathVariable("id") int id)
+	{
+		System.out.println("i m inside sinle product");
+		Product product = null;
+	    product = productDAO.get(id);
+		ModelAndView mv = new ModelAndView("page");
+        mv.addObject("title",product.getName());
+    	mv.addObject("product",product);
+		mv.addObject("userClickShowProduct",true);
+		System.out.println("name");
+	    System.out.println(product.getName());
 		return mv;
 	}
 	/*
@@ -100,5 +120,7 @@ public class PageController {
 		mv.addObject("userClickContact",true);
 		return mv;				
 	}	
+	
+	
 	
 }

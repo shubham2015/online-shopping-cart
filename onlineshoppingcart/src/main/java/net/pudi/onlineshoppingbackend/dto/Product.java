@@ -37,15 +37,19 @@ public class Product implements Serializable  {
 	@Min(value = 1, message="Please select at least one value!")
 	private double unitPrice;
 	private int quantity;
+	@JsonIgnore
 	@Column(name = "is_active")	
 	private boolean active = true ;
+	
 	@Column(name = "category_id")
 	@JsonIgnore
-	private int categoryId;
+	private int categoryId;    
 	@Column(name = "supplier_id")
 	@JsonIgnore
 	private int supplierId;
+
 	private int purchases;
+
 	private int views;
 	
 	
@@ -73,12 +77,15 @@ public class Product implements Serializable  {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getCode() {
 		return code;
 	}
+	
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -157,4 +164,5 @@ public class Product implements Serializable  {
 				+ views + "]";
 	}
 }
+
 

@@ -1,3 +1,4 @@
+<!-- Master Page of all the pages which holds every thing -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -71,6 +72,9 @@
 			<c:if test="${userClickAllProducts == true }">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
+			<c:if test="${userClickShowProduct == true }">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
 			<!-- Load the listProducts.jsp when clicked -->
 			<c:if test="${userClickCategoryProducts == true }">
 				<%@include file="listProducts.jsp"%>
@@ -79,6 +83,7 @@
 			<c:if test="${userClickContact == true }">
 				<%@include file="contact.jsp"%>
 			</c:if>
+			
 		</div>
 		<!-- Footer -->
 

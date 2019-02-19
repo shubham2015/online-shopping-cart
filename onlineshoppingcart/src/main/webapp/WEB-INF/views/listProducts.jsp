@@ -75,10 +75,10 @@
 						
 							<tr>
 								<th></th>
-								<th  id = "some">Name</th>
+								<th>Name</th>
 								<th>Brand</th>
 								<th>Price</th>
-								<th>Qty. Available</th>
+								<th>Quantity</th>
 								<th></th>
 							
 							</tr>
@@ -93,7 +93,7 @@
 								<th>Name</th>
 								<th>Brand</th>
 								<th>Price</th>
-								<th>Qty. Available</th>
+								<th>Quantity</th>
 								<th></th>
 							
 							</tr>
