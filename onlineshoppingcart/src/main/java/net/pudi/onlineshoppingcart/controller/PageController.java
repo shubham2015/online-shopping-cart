@@ -19,7 +19,7 @@ import net.pudi.onlineshoppingbackend.dto.Product;
  * Front Controller
  * Controller class which handles all the urls and will send the 
  * request to a particular controller and return back the view 
- * 
+ * Handles all the HTTP requests
  * @Controller is added to specify that the class is a front controller and its going to handle the user requests
  */
 

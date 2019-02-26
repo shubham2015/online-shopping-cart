@@ -48,7 +48,7 @@
 
 </c:when>
 <c:otherwise>
-<a href = "${contextRoot}/cart/add/${product.views}/product" class ="btn btn-success">Add To Cart</a>
+<a href = "${contextRoot}/cart/add/${product.id}/product" class ="btn btn-success">Add To Cart</a>
 
 </c:otherwise>
 </c:choose>

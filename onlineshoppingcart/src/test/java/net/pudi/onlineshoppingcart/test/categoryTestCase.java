@@ -31,7 +31,7 @@ private static AnnotationConfigApplicationContext context;
 		context.scan("net.pudi.onlineshoppingbackend.dto");
 		context.scan("net.pudi.onlineshoppingcart.controller");
 		context.refresh();
-		
+		//categoryDAO is the interface name and so the when ApplicationContext scans over it, it actually creates objects of the classes which implements it 
 		categoryDAO = (CategoryDAO)context.getBean("categoryDAO");
 	}
 	

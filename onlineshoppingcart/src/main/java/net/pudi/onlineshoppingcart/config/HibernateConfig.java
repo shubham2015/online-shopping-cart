@@ -24,14 +24,15 @@ public class HibernateConfig {
 	private final static String DATABASE_PASSWORD ="";
 
    @Bean("dataSource")
-   public DataSource getDataSource()
+   public DataSource getDataSource() 
    {
 	   BasicDataSource dataSource = new BasicDataSource();
 	   dataSource.setDriverClassName(DATABASE_DRIVER);
 	   dataSource.setUrl(DATABASE_URL);
 	   dataSource.setUsername(DATABASE_USERNAME);
 	   dataSource.setPassword(DATABASE_PASSWORD);
-	   
+	   System.out.println();
+	   System.out.println(dataSource.getUrl());
 	   return dataSource;
 	   
    }
@@ -54,6 +55,7 @@ public Properties getHibernateProperties() {
 	
 	properties.put("hibernate.show_sql", "true");
 	properties.put("hibernate.format_sql", "true");
+	//properties.put("hibernate.hbm2ddl.auto","update");
 	return properties;
 }
 @Bean

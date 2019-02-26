@@ -22,7 +22,7 @@ CREATE TABLE user_detail (
 
 
 CREATE TABLE product (
-	id IDENTITY,
+	id id AUTO_INCREMENT,
 	code VARCHAR(20),
 	name VARCHAR(50),
 	brand VARCHAR(50),
@@ -41,7 +41,7 @@ CREATE TABLE product (
 
 -- the address table to store the user billing and shipping addresses
 CREATE TABLE address (
-	id IDENTITY,
+	id id AUTO_INCREMENT,
 	user_id int,
 	address_line_one VARCHAR(100),
 	address_line_two VARCHAR(100),
@@ -57,7 +57,7 @@ CREATE TABLE address (
 
 -- the cart table to store the user cart top-level details
 CREATE TABLE cart (
-	id IDENTITY,
+	id id AUTO_INCREMENT,
 	user_id int,
 	grand_total DECIMAL(10,2),
 	cart_lines int,
@@ -67,7 +67,7 @@ CREATE TABLE cart (
 -- the cart line table to store the cart details
 
 CREATE TABLE cart_line (
-	id IDENTITY,
+	id id AUTO_INCREMENT,
 	cart_id int,
 	total DECIMAL(10,2),
 	product_id int,
@@ -82,7 +82,7 @@ CREATE TABLE cart_line (
 -- the order detail table to store the order
 
 CREATE TABLE order_detail (
-	id IDENTITY,
+	id id AUTO_INCREMENT,
 	user_id int,
 	order_total DECIMAL(10,2),
 	order_count int,
@@ -98,7 +98,7 @@ CREATE TABLE order_detail (
 -- the order item table to store order items
 
 CREATE TABLE order_item (
-	id IDENTITY,
+	id id AUTO_INCREMENT,
 	order_id int,
 	total DECIMAL(10,2),
 	product_id int,

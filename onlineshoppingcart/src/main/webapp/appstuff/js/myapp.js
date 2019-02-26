@@ -85,19 +85,19 @@ $(function(){
 					}
 	    	 },
 	    	 {
-	    		 data:'views',
+	    		 data:'id',
 	    		 mRender: function(data,type,row)
 	    		 {
 	    			 var str='';
 	    			
-	    			 str += '<a href="'+window.contextRoot+ '/show/'+data+'/product" class="btn btn-info btn-lg">View</a> &#160';
+	    			 str += '<a href="'+window.contextRoot+ '/show/'+data+'/product" class="btn btn-info btn-sm">View</a> &#160';
 	    			 if(row.quantity < 1)
 	    				 
 	    				 {
-	    				 str += '<a href="javascript:void(0)" class="btn btn-info btn-lg disabled">Add To Cart</a>';
+	    				 str += '<a href="javascript:void(0)" class="btn btn-info btn-lg disabled"> <span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart</a>';
 	    				 }
 	    			 else{ 
-	    			 str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product" class="btn btn-info btn-lg">Add To Cart</a>';
+	    			 str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product" class="btn btn-info btn-sm"> <span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart</a>';
 	    			 }
                       return str;
 	    		 }
