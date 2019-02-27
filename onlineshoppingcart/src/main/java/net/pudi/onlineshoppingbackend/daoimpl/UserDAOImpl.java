@@ -75,18 +75,18 @@ public class UserDAOImpl implements UserDAO {
 	
 
 	@Override
-	public List<Address> listShippingAddresses(int userId) {
-		String selectQuery = "FROM Address WHERE userId = :userId AND shipping = :isShipping ORDER BY id DESC";
+	public List<Address> listShippingAddresses(User user) {
+		String selectQuery = "FROM Address WHERE user = :user AND shipping = :shipping ORDER BY id DESC";
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery(selectQuery,Address.class)
-						.setParameter("userId", userId)
-						.setParameter("isShipping", true)
+						.setParameter("user", user)
+						.setParameter("shipping", true)
 							.getResultList();
 		
 	}
-
-	@Override
+   //Oder version
+	/*@Override
 	public Address getBillingAddress(int userId) {
 		String selectQuery = "FROM Address WHERE userId = :userId AND billing = :isBilling";
 		try{
@@ -100,8 +100,23 @@ public class UserDAOImpl implements UserDAO {
 		catch(Exception ex) {
 			return null;
 		}
-	}
+	}*/
 
+	@Override
+	public Address getBillingAddress(User user) {
+		String selectQuery = "FROM Address WHERE user = :user AND billing = :billing";
+		try{
+		return sessionFactory
+				.getCurrentSession()
+					.createQuery(selectQuery,Address.class)
+						.setParameter("user", user)
+						.setParameter("billing", true)
+						.getSingleResult();
+		}
+		catch(Exception ex) {
+			return null;
+		}
+	}
 	@Override
 	public User get(int id) {
 		try {			

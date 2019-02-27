@@ -18,8 +18,10 @@ public interface UserDAO {
 	Address getAddress(int addressId);
 	boolean addAddress(Address address);
 	boolean updateAddress(Address address);
-	Address getBillingAddress(int userId);
-	List<Address> listShippingAddresses(int userId);
+	//Address getBillingAddress(int userId);
+	//List<Address> listShippingAddresses(int userId);
+	Address getBillingAddress(User user);
+	List<Address> listShippingAddresses(User user);
 	
 
 	

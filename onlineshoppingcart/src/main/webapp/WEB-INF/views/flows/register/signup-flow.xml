@@ -1,38 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+	<!-- Declaring Models -->
 
-<var name = "user" class = "net.pudi.onlineshoppingbackend.dto.User"/>
-<var name = "billing" class = "net.pudi.onlineshoppingbackend.dto.Address"/>
-<!-- Start State -->
-<view-state id="personal" view="flows/register/signup-personal" model = "user">
-<transition on="billing" to ="billing"/>
-</view-state>
+	<var name="user" class="net.pudi.onlineshoppingbackend.dto.User" />
+	<var name="billing"
+		class="net.pudi.onlineshoppingbackend.dto.Address" />
 
-<!-- When you are personal at personal go to personal state and when you are confirm go to confirm state. Every state is mapped based on id -->
-<view-state id = "billing" view = "flows/register/signup-billing" model = "billing">
-<transition on="personal" to ="personal"/>
-<transition on="confirm" to ="confirm"/>
+	<!-- Returning and adding a registerModel instance at the beginning of signup -->
+	<on-start>
+		<evaluate expression="registerHandler.init()"
+			result="flowScope.registerModel" />
+	</on-start>
 
-</view-state>
-<view-state id = "confirm" view = "flows/register/signup-confirm">
-<transition on="personal" to ="personal"/>
-<transition on="billing" to ="billing"/>
-<transition on="success" to ="success"/>
+	<!-- Start State and passing models to the flow -->
+	<!-- Model name is actually the object which is passed by its respective 
+		class -->
 
-</view-state>
+	<view-state id="personal"
+		view="flows/register/signup-personal" model="user">
+		<transition on="billing" to="billing" />
+		<on-exit>
+			<evaluate
+				expression="registerHandler.addUser(flowScope.registerModel,user)" />
+		</on-exit>
+	</view-state>
 
-<!-- Home and final success is end state -->
-<end-state id="home" view ="externalRedirect:contextRelative:/"/>
-<end-state id = "success" view = "flows/register/signup-success"/>
-<!-- Global Transition -->
+	<!-- When you are personal at personal go to personal state and when you 
+		are confirm go to confirm state. Every state is mapped based on id -->
+	<view-state id="billing"
+		view="flows/register/signup-billing" model="billing">
+		<transition on="personal" to="personal" />
+		<transition on="confirm" to="confirm" />
+		<on-exit>
+			<evaluate
+				expression="registerHandler.addBilling(flowScope.registerModel,billing)" />
+		</on-exit>
 
-<global-transitions>
-<transition on ="home" to="home"/>
+	</view-state>
+	<view-state id="confirm"
+		view="flows/register/signup-confirm" model="flowScope.registerModel">
+		<transition on="personal" to="personal" />
+		<transition on="billing" to="billing" />
+		<transition on="submit" to="submit" />
+	</view-state>
 
-</global-transitions>
+	<action-state id="submit">
+		<evaluate 
+		  expression="registerHandler.saving(flowScope.registerModel)" />
+		<transition on="success" to="success"/>
+	</action-state>
+
+
+	<!-- Home and final success is end state -->
+	<end-state id="home"
+		view="externalRedirect:contextRelative:/" />
+	<end-state id="success" view="flows/register/signup-success" />
+	<!-- Global Transition -->
+
+	<global-transitions>
+		<transition on="home" to="home" />
+
+	</global-transitions>
 </flow>
 		
