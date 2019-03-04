@@ -4,15 +4,16 @@ package net.pudi.onlineshoppingbackend.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
-//import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotBlank;
+
+
+
 
 @Entity
 public class Address implements Serializable {
@@ -24,30 +25,24 @@ public class Address implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	//@NotBlank(message = "Please enter address line one!")
-	//@Column(name = "user_id")
-	//private int userId;
-	@ManyToOne(cascade = {CascadeType.ALL})
-	private User user;
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user=user;
-	}
+	@Column(name = "user_id")
+	private int userId;
+	//
 	@Column(name = "address_line_one")
+	@NotBlank(message = "Please enter address line one!")
 	private String addressLineOne;
-	//@NotBlank(message = "Please enter address line two!")	
+	//
 	@Column(name = "address_line_two")
+	@NotBlank(message = "Please enter address line two!")	
 	private String addressLineTwo;
-	//@NotBlank(message = "Please enter City!")	
+	@NotBlank(message = "Please enter City!")	
 	private String city;
-	//@NotBlank(message = "Please enter State!")	
+	@NotBlank(message = "Please enter State!")	
 	private String state;
-	//@NotBlank(message = "Please enter country!")	
+	@NotBlank(message = "Please enter country!")	
 	private String country;
 	@Column(name ="postal_code")
-	//@NotBlank(message = "Please enter Postal Code!")	
+	@NotBlank(message = "Please enter Postal Code!")	
 	private String postalCode;
 	@Column(name="is_shipping")
 	private boolean shipping;
@@ -104,7 +99,7 @@ public class Address implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", addressLineOne=" + addressLineOne + ", addressLineTwo=" + addressLineTwo
+		return "Address [id=" + id + ",userId =" +userId+", addressLineOne=" + addressLineOne + ", addressLineTwo=" + addressLineTwo
 				+ ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode=" + postalCode
 				+ ", billing=" + billing + "]";
 	}
@@ -116,12 +111,12 @@ public class Address implements Serializable {
 	public void setShipping(boolean shipping) {
 		this.shipping = shipping;
 	}
-	/*public int getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	*/
+	
 	
 }

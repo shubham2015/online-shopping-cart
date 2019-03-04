@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 //import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -28,19 +30,22 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	//@NotBlank(message = "Please enter first name!")
+	
 	@Column(name = "first_name")
+	@NotBlank(message = "Please enter first name!")
 	private String firstName;
-	//@NotBlank(message = "Please enter last name!")
+	
 	@Column(name = "last_name")
+	@NotBlank(message = "Please enter last name!")
 	private String lastName;
-	//@NotBlank(message = "Please enter email address!")	
+	@NotBlank(message = "Please enter email address!")	
 	private String email;
-	//@NotBlank(message = "Please enter contact number!")
+	
 	@Column(name = "contact_number")
+	@NotBlank(message = "Please enter contact number!")
 	private String contactNumber;
 	private String role;
-	//@NotBlank(message = "Please enter password!")
+	@NotBlank(message = "Please enter password!")
 	private String password;
 	private boolean enabled = true;
 	@Transient

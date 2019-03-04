@@ -8,6 +8,9 @@ package net.pudi.onlineshopping.handler;
 import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
+import org.springframework.binding.message.MessageResolver;
 import org.springframework.stereotype.Component;
 
 import net.pudi.onlineshopping.model.RegisterModel;
@@ -22,23 +25,45 @@ public class RegisterHandler implements Serializable{
 	private UserDAO userDAO;
     
 	private static final long serialVersionUID = 1L;
-	public String saving(RegisterModel registerModel) 
+	public String validateUser(User user, MessageContext error)
 	{
+		String transitionValue = "success";
+		if(!(user.getPassword().equals(user.getConfirmPassword())))
+		{
+			error.addMessage(new MessageBuilder().error().source("confirmPassword").defaultText("Password doesn't match").build());
+			transitionValue = "failure";
+		}
+		if(userDAO.getByFirst(user.getFirstName())!=null)
+		{
+			error.addMessage(new MessageBuilder().error().source("firstName").defaultText("User name already exists").build());
+
+			transitionValue = "failure";
+		}
+		return transitionValue;
+	}
+	public String saveAll(RegisterModel registerModel) 
+	{
+	
 		  String transitionValue = "success";
 		  User user = registerModel.getUser();
-		  if(user.getRole().equals("USER")) {
+		  
 		   // create a new cart
-		   Cart cart = new Cart();
-		   cart.setUser(user);
-		   user.setCart(cart);
-		  }
-		  System.out.println("snsiosnionk");
+		  Cart cart = new Cart();
+		  cart.setUser(user);
+		  user.setCart(cart);
+		  
+		  System.out.println("updates sss");
 		  userDAO.add(user);
-		  // save the billing address
+		 System.out.println(user.toString());
 		  Address billing = registerModel.getBilling();
-		  billing.setUser(user);
-		  billing.setBilling(true);  
+		  System.out.println(user.getFirstName());
+		  user = userDAO.getByFirst(user.getFirstName());
+		  System.out.println(user.toString());
+		  billing.setUserId(user.getId());
+          billing.setBilling(true);  
 		  userDAO.addAddress(billing);
+		  System.out.println("mujhe");
+		  System.out.println(billing.toString());
 		  return transitionValue;
 		  
     } 
@@ -53,10 +78,7 @@ public class RegisterHandler implements Serializable{
 	public void addBilling(RegisterModel registerModel, Address billing) {
 		registerModel.setBilling(billing);
 	}
-	public void sss()
-	{
-		System.out.println("Test");
-	}
+	
 	
 	
 }

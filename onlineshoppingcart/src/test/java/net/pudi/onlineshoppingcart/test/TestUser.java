@@ -16,7 +16,7 @@ public class TestUser {
 
 	private static AnnotationConfigApplicationContext context;
 	private static UserDAO userDAO;
-	private User user = null;
+	private User user;
 	private Cart cart = null;
 	private Address address = null;
 	
@@ -36,20 +36,61 @@ public class TestUser {
 	@Test
     public void testAddUser() {
 		
+		/*user = new User();
+		user = userDAO.getById(5);
 		
-		user =userDAO.getByEmail("hr@gmail.com");
-		System.out.println("Print");
+		*/
+		//System.out.println(user.toString());
+		//assertEquals("succes",1,user.getId());
+		/*user = new User();
+		
+		user.setFirstName("pudi");
+		user.setLastName("gggii");
+		user.setEmail("hr@gmailh.com");
+		user.setContactNumber("1234512345");
+		user.setRole("USER");
+		user.setPassword("12345");
 		System.out.println(user.toString());
-		assertEquals("s","Mumbai",userDAO.getBillingAddress(user).getCity());
-		/*user = new User() ;
-		user.setFirstName("Hrithiki");
+		assertEquals("succes",true,userDAO.add(user));*/
+		//user = new User();
+		//user = userDAO.getByEmail("pudi.subham@gmail.com");
+		
+		/*address = new Address();
+		address = userDAO.getBillingAddress(5);
+		System.out.println(address.toString());*/
+		/*address.setAddressLineOne("PArk Street");
+		address.setAddressLineTwo("Near Kaabbubsuisbbil Store");
+		address.setCity("Mumbai");
+		address.setState("Mrain");
+		address.setCountry("India");
+		address.setPostalCode("400001");
+		address.setBilling(true);
+		address.setUserId(user.getId());
+		System.out.println(address.toString());*/
+		/*for(Address a:userDAO.getBillingAddress(5))
+		{
+			System.out.println(a.toString());
+		}*/
+		//assertEquals("succ in shipping addess",1,userDAO.listShippingAddresses(10).size());
+		
+		//assertEquals("Mumbai",userDAO.getBillingAddress(user.getId()).getCity());
+		//System.out.println("Print");
+		//
+	
+		user = new User() ;
+		user = userDAO.getByFirst("e");
+		System.out.println(user.toString());
+		System.out.println(user.getId());
+		assertEquals("succ in shipping addess",47,user.getId());
+		/*user.setFirstName("Hrithiki");
 		user.setLastName("Roshaniiii");
 		user.setEmail("hr@gmail.com");
 		user.setContactNumber("1234512345");
 		user.setRole("USER");
 		user.setPassword("12345");
-		assertEquals("succes",true,userDAO.add(user));*/
-		/*user = userDAO.getByEmail("hr@gmail.com");
+		assertEquals("succes",true,userDAO.add(user));
+		System.out.println(user.toString());
+		//user = userDAO.getByEmail("hr@gmail.com");
 		address = new Address();
 		address.setAddressLineOne("101/B Jadoopi Society, Krissh Nagar");
 		address.setAddressLineTwo("Near Kaabil Store");
@@ -58,7 +99,8 @@ public class TestUser {
 		address.setCountry("India");
 		address.setPostalCode("400001");
 		address.setBilling(true);
-		address.setUser(user);
+		
+		address.setUserId(20);
 		assertEquals("succ in shipping addess",true,userDAO.addAddress(address));*/
 		/*assertEquals("succ in addess",true,userDAO.addAddress(address));
 		address = new Address();

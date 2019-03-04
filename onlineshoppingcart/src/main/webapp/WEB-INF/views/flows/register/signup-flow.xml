@@ -22,13 +22,20 @@
 
 	<view-state id="personal"
 		view="flows/register/signup-personal" model="user">
-		<transition on="billing" to="billing" />
+		<transition on="billing" to="validate" />
 		<on-exit>
 			<evaluate
 				expression="registerHandler.addUser(flowScope.registerModel,user)" />
 		</on-exit>
 	</view-state>
-
+    
+    <!-- validate signup-personal page-->
+	<action-state id="validate">
+		<evaluate expression="registerHandler.validateUser(user,messageContext)" />
+		<transition on="success" to="billing"/>
+		<transition on="failure" to="personal"/>
+	</action-state>
+    
 	<!-- When you are personal at personal go to personal state and when you 
 		are confirm go to confirm state. Every state is mapped based on id -->
 	<view-state id="billing"
@@ -50,7 +57,7 @@
 
 	<action-state id="submit">
 		<evaluate 
-		  expression="registerHandler.saving(flowScope.registerModel)" />
+		  expression="registerHandler.saveAll(flowScope.registerModel)" />
 		<transition on="success" to="success"/>
 	</action-state>
 
@@ -62,7 +69,7 @@
 	<!-- Global Transition -->
 
 	<global-transitions>
-		<transition on="home" to="home" />
+		<transition on="home" to="home" validate = "false"/>
 
 	</global-transitions>
 </flow>
