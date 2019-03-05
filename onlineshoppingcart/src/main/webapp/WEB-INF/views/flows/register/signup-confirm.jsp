@@ -1,5 +1,18 @@
 <%@include file = "../shared/flows-header.jsp" %>
-			<div class="container">
+<style>
+.panel-heading h4
+{
+text-align: center;
+font-family: cursive;
+}
+h3,h4,p
+{
+text-align: center;
+font-family: Comic Sans MS;
+}
+
+</style>
+<div class="container">
 			<div class="row">
 	
 		<div class="col-sm-6">
@@ -12,10 +25,10 @@
 			
 				<div class="panel-body">
 					<div class="text-center">
-						<h3>Name : <strong>${registerModel.user.firstName} ${registerModel.user.lastName}</strong></h3>
-						<h4>Email : <strong>${registerModel.user.email}</strong></h4>
-						<h4>Contact : <strong>${registerModel.user.contactNumber}</strong></h4>
-						<h4>Role : <strong>${registerModel.user.role}</strong></h4>
+						<h3>Name : ${registerModel.user.firstName} ${registerModel.user.lastName}</h3>
+						<h4>Email : ${registerModel.user.email}</h4>
+						<h4>Contact : ${registerModel.user.contactNumber}</h4>
+						<h4>Role : ${registerModel.user.role}</h4>
 						<p>
 							<a href="${flowExecutionUrl}&_eventId_personal" class="btn btn-primary">Edit</a>
 						</p>

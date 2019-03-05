@@ -18,14 +18,7 @@
 	<context:component-scan
 		base-package="net.pudi.onlineshoppingcart.controller" />
 
-	<context:component-scan
-		base-package="net.pudi.onlineshoppingbackend.daoimpl" />
-	<context:component-scan
-		base-package="net.pudi.onlineshoppingcart.config" />
-	<context:component-scan
-		base-package="net.pudi.onlineshoppingbackend.dto" />
-	<context:component-scan
-		base-package="net.pudi.onlineshoppingbackend.dao" />
+	
 	<context:component-scan
 		base-package="net.pudi.onlineshopping.handler" />
 	<context:component-scan

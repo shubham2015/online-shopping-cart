@@ -1,6 +1,42 @@
 <%@include file = "../shared/flows-header.jsp" %>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>	
-			<div class="container">
+<style>
+.backg
+{
+	
+	background: url("${images}/Paris.jpg") no-repeat;
+	background-size: 100% 100vh;
+    
+}
+.panel{
+border:1px solid;
+background: url("${images}/Paris.jpg") no-repeat;
+	background-size: 100% 100%;
+	margin-top: 20px;
+	-webkit-box-shadow: -2px 11px 75px -7px rgba(0,0,0,0.69);
+-moz-box-shadow: -2px 11px 75px -7px rgba(0,0,0,0.69);
+box-shadow: -2px 11px 75px -7px rgba(0,0,0,0.69);
+}
+.panel-heading h4{
+font-family: cursive;
+text-align: center;
+}
+.panel-heading{
+
+background-color: red;
+}
+.panel-heading>.dropdown .dropdown-toggle {
+	color: inherit
+}
+.panel-title {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 18px;
+	color: red;
+}
+</style>
+
+			<div class="container backg">
 			<div class="row">
 			
 			<div class="col-md-6 col-md-offset-3">

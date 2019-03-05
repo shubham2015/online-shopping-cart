@@ -1,14 +1,53 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@include file="../shared/flows-header.jsp"%>
-<div class="container">
+<spring:url var="images" value="/resources/images" />
+<style>
+.backg
+{
+	
+	background: url("${images}/Paris.jpg") no-repeat;
+	background-size: 100% 100vh;
+    
+}
+.panel{
+border:1px solid;
+background: url("${images}/Paris.jpg") no-repeat;
+	background-size: 100% 100%;
+	margin-top: 20px;
+	-webkit-box-shadow: -2px 11px 75px -7px rgba(0,0,0,0.69);
+-moz-box-shadow: -2px 11px 75px -7px rgba(0,0,0,0.69);
+box-shadow: -2px 11px 75px -7px rgba(0,0,0,0.69);
+}
+.panel-heading h4{
+font-family: cursive;
+text-align: center;
+}
+.panel-heading{
+
+background-color: red;
+}
+.panel-heading>.dropdown .dropdown-toggle {
+	color: inherit
+}
+.panel-title {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 18px;
+	color: red;
+}
+</style>
+
+
+<div class="container backg">
 	<div class="row">
+	
 
 		<div class="col-md-6 col-md-offset-3">
 
 			<div class="panel panel-primary">
 
 				<div class="panel-heading">
-					<h4>Sign Up - Personal</h4>
+					<h4>Sign Up </h4>
 				</div>
 
 				<div class="panel-body">
@@ -90,7 +129,7 @@
 							<div class="col-md-offset-4 col-md-8">
 								<button type="submit" name="_eventId_billing"
 									class="btn btn-primary">
-									Next - Billing <span class="glyphicon glyphicon-chevron-right"></span>
+									Next - Billing 
 								</button>
 							</div>
 						</div>

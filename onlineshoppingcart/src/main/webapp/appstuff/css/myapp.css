@@ -109,6 +109,11 @@ footer {
 .switch input {display:none;}
 
 /* The slider */
+
+
+/*Background image for the signup page and login page*/
+
+
 .slider {
   position: absolute;
   cursor: pointer;
